@@ -1,3 +1,5 @@
+import logging
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 from typing import Text
 import telegram
 from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Filters
@@ -7,14 +9,8 @@ from config import *
 updater = Updater(token=TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
-import logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-
 bot = telegram.Bot(token=TOKEN)
 print(bot.get_me())
-
-updates = bot.get_updates()
-print(updates[0])
 
 # Function called when the Bot receievs a certain command
 def start(update, context):
