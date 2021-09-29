@@ -19,13 +19,13 @@ logger = logging.getLogger(__name__)
 
 # Begin creating functions for /caps and Caps inline commands
 
-def caps(update: Update, context: CallbackContext):
+def caps(update: Update, context: CallbackContext) -> None:
     text_caps = ' '.join(context.args).upper()
     context.bot.send_message(chat_id=update.effective_chat.id, text = text_caps)
 
 # Bot now has in-line commands
 # Use @Memebot or @ZTele_bot to let start function
-def inline_query(update: Update, context: CallbackContext):
+def inline_query(update: Update, context: CallbackContext) -> None:
     query = update.inline_query.query
     if not query:
         return
