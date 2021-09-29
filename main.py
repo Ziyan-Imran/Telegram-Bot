@@ -37,7 +37,7 @@ caps_handler = CommandHandler('caps', caps)
 dispatcher.add_handler(caps_handler)
 
 # Bot now has in-line commands
-# Use @caps to let start function
+# Use @Memebot or @ZTele_bot to let start function
 def inline_caps(update, context):
     query = update.inline_query.query
     if not query:
@@ -66,3 +66,4 @@ dispatcher.add_handler(unknown_handler)
 updater.start_polling()
 
 updater.idle()
+
