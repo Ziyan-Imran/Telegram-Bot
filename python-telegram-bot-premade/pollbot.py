@@ -87,8 +87,8 @@ def receive_poll_answer(update: Update, context: CallbackContext) -> None:
         parse_mode=ParseMode.HTML,
     )
     context.bot_data[poll_id]["answers"] += 1
-    # Close poll after three participants voted
-    if context.bot_data[poll_id]["answers"] == 3:
+    # Close poll after ten participants voted
+    if context.bot_data[poll_id]["answers"] == 10:
         context.bot.stop_poll(
             context.bot_data[poll_id]["chat_id"], context.bot_data[poll_id]["message_id"]
         )
