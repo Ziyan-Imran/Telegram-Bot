@@ -130,3 +130,4 @@ dmypy.json
 
 # Ignore config.py which stores Token ID
 config.py
+old_main.py
