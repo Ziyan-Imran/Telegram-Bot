@@ -29,12 +29,12 @@ def main() -> None:
     dispatcher = updater.dispatcher
 
     # Create inline handler for inline_caps module
-    inline_caps_handler = InlineQueryHandler(inline_caps)
+    inline_query_handler = InlineQueryHandler(inline_query)
 
     # on different commands - answer in Telegram
     dispatcher.add_handler(CommandHandler("start", start))
     dispatcher.add_handler(CommandHandler("scream", caps))
-    dispatcher.add_handler(inline_caps_handler)
+    dispatcher.add_handler(InlineQueryHandler(inline_query))
 
     # Start the bot
     updater.start_polling()
