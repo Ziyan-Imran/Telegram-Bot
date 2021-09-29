@@ -11,6 +11,7 @@ from telegram import InlineQueryResultArticle, InputTextMessageContent, Update
 from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Filters, InlineQueryHandler, dispatcher, inlinequeryhandler
 from config import *
 from capsbot import *
+from timerbot import *
 
 # Define a few command handlers
 def start(update: Update, _: CallbackContext) -> None:
