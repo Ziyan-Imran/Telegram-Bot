@@ -1,5 +1,6 @@
 # Simple bot program to in line query commands and a /caps command
 import logging
+import constants as keys
 from uuid import uuid4
 
 import telegram 
@@ -8,7 +9,6 @@ from telegram import Update
 from telegram import update
 from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Filters, InlineQueryHandler, CallbackContext, inlinequeryhandler
 from telegram.utils.helpers import escape_markdown
-from config import *
 
 # Enable logging
 logging.basicConfig(
@@ -61,7 +61,7 @@ inline_caps_handler = InlineQueryHandler(inline_query)
 def main() -> None:
     """Run bot"""
     # Create the Update and pass it my bot's token
-    updater = Updater(TOKEN)
+    updater = Updater(keys.API_KEY)
 
     # Get the dispatcher to register handlers
     dispatcher = updater.dispatcher

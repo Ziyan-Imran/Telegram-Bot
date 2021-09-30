@@ -129,5 +129,5 @@ dmypy.json
 .pyre/
 
 # Ignore config.py which stores Token ID
-config.py
 old_main.py
+constants.py
