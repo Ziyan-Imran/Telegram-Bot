@@ -27,7 +27,7 @@ from telegram.ext import (
     Filters,
     CallbackContext,
 )
-from config import *
+import constants as keys
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
@@ -154,7 +154,7 @@ def help_handler(update: Update, context: CallbackContext) -> None:
 def main() -> None:
     """Run bot."""
     # Create the Updater and pass it your bot's token.
-    updater = Updater(TOKEN)
+    updater = Updater(keys.API_KEY)
     dispatcher = updater.dispatcher
     dispatcher.add_handler(CommandHandler('start', start))
     dispatcher.add_handler(CommandHandler('poll', poll))
