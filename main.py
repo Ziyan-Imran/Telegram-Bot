@@ -1,5 +1,6 @@
 import logging
 import constants as keys
+import json
 
 from telegram import bot
 from telegram.ext.callbackcontext import CallbackContext
@@ -12,6 +13,8 @@ from telegram import InlineQueryResultArticle, InputTextMessageContent, Update
 from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Filters, InlineQueryHandler, dispatcher, inlinequeryhandler
 from capsbot import *
 from timerbot import *
+from search_youtube import youtube_search
+
 
 # Define a few command handlers
 def start(update: Update, _: CallbackContext) -> None:

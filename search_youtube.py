@@ -8,16 +8,27 @@
 #       to find the correct place to provide that key..
 
 import argparse
+import logging
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+import constants as keys
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
+
+# Enable logging
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
+)
+
+logger = logging.getLogger(__name__)
 
 
 # Set DEVELOPER_KEY to the API key value from the APIs & auth > Registered apps
 # tab of
 #   https://cloud.google.com/console
 # Please ensure that you have enabled the YouTube Data API for your project.
-DEVELOPER_KEY = 'REPLACE_ME'
+DEVELOPER_KEY = keys.GOOGLE_DEV_KEY
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
@@ -50,9 +61,10 @@ def youtube_search(options):
       playlists.append('%s (%s)' % (search_result['snippet']['title'],
                                     search_result['id']['playlistId']))
 
-  print 'Videos:\n', '\n'.join(videos), '\n'
-  print 'Channels:\n', '\n'.join(channels), '\n'
-  print 'Playlists:\n', '\n'.join(playlists), '\n'
+  print ('Videos:\n', '\n'.join(videos), '\n')
+  print ('Channels:\n', '\n'.join(channels), '\n')
+  print ('Playlists:\n', '\n'.join(playlists), '\n')
+
 
 
 if __name__ == '__main__':
@@ -63,5 +75,5 @@ if __name__ == '__main__':
 
   try:
     youtube_search(args)
-  except HttpError, e:
-    print 'An HTTP error %d occurred:\n%s' % (e.resp.status, e.content)
+  except HttpError as e:
+    print("An HTTP error %d occurred:\n%s' % (e.resp.status, e.content)")
