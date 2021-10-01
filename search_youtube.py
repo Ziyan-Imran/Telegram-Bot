@@ -9,11 +9,13 @@
 
 import argparse
 import logging
+import json
+from google.auth.transport import Request
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import constants as keys
-from telegram import Update
+from telegram import Update, InlineQueryResultVideo
 from telegram.ext import Updater, CommandHandler, CallbackContext
 
 # Enable logging
@@ -65,15 +67,42 @@ def youtube_search(options):
   print ('Channels:\n', '\n'.join(channels), '\n')
   print ('Playlists:\n', '\n'.join(playlists), '\n')
 
+def telegram_youtube_search(update: Update, context: CallbackContext) -> None:
+  "Search youtube for a vid"
+  parser_tele = argparse.ArgumentParser()
+  parser_tele.add_argument('--q', help='Search term', default=context)
+  parser_tele.add_argument('--max-results', help='Max results', default=5)
+  args_tele = parser_tele.parse_args()
+
+  youtube_search(args_tele)
+
+  defualt_youtube_url = 'https://www.youtube.com/watch?v='
 
 
 if __name__ == '__main__':
+
+  search_term = str(input("Please enter a term:"))
   parser = argparse.ArgumentParser()
-  parser.add_argument('--q', help='Search term', default='Google')
-  parser.add_argument('--max-results', help='Max results', default=25)
+  parser.add_argument('--q', help='Search term', default=search_term)
+  parser.add_argument('--max-results', help='Max results', default=5)
   args = parser.parse_args()
 
-  try:
-    youtube_search(args)
-  except HttpError as e:
-    print("An HTTP error %d occurred:\n%s' % (e.resp.status, e.content)")
+  # Create the Update and pass it my bot's token
+  updater = Updater(keys.API_KEY)
+
+  # Get the dispatcher to register handlers
+  dispatcher = updater.dispatcher
+
+  # on different commands 
+  dispatcher.add_handler(CommandHandler("youtube", telegram_youtube_search))
+
+  # Start the bot
+  updater.start_polling()
+
+  updater.idle()
+
+  #try:
+    #youtube_search(args)
+
+  #except HttpError as e:
+    #print("An HTTP error %d occurred:\n%s' % (e.resp.status, e.content)")
