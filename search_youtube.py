@@ -67,6 +67,8 @@ def youtube_search(options):
   print ('Channels:\n', '\n'.join(channels), '\n')
   print ('Playlists:\n', '\n'.join(playlists), '\n')
 
+  return videos[0]
+
 def telegram_youtube_search(update: Update, context: CallbackContext) -> None:
   "Search youtube for a vid"
   parser_tele = argparse.ArgumentParser()
@@ -74,10 +76,17 @@ def telegram_youtube_search(update: Update, context: CallbackContext) -> None:
   parser_tele.add_argument('--max-results', help='Max results', default=5)
   args_tele = parser_tele.parse_args()
 
-  youtube_search(args_tele)
+  selected_video = youtube_search(args_tele)
 
-  defualt_youtube_url = 'https://www.youtube.com/watch?v='
-
+def inline_video(update: Update, context: CallbackContext) -> None:
+  query = update.inline_query.query
+  if not query:
+    return
+  results = [
+    InlineQueryResultVideo(
+      input_message_content=telegram_youtube_search(update, context)
+    )
+  ]
 
 if __name__ == '__main__':
 
@@ -94,7 +103,7 @@ if __name__ == '__main__':
   dispatcher = updater.dispatcher
 
   # on different commands 
-  dispatcher.add_handler(CommandHandler("youtube", telegram_youtube_search))
+  dispatcher.add_handler(InlineQueryResultVideo(inline_video))
 
   # Start the bot
   updater.start_polling()
