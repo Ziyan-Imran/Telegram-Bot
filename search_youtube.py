@@ -88,11 +88,33 @@ def inline_video(update: Update, context: CallbackContext) -> None:
     )
   ]
 
+def command_video(update: Update, context: CallbackContext):
+  youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
+  search_term = ' '.join(context.args)
+  print("Context is: " + search_term)
+  # Call the search.list method to retrieve results matching the specified
+  # query term.
+  search_response = youtube.search().list(
+    q=search_term,
+    part='id,snippet',
+    maxResults=5
+  ).execute()
+
+  videos = []
+  # Add each result to the appropriate list, and then display the lists of
+  # matching videos, channels, and playlists.
+  for search_result in search_response.get('items', []):
+    if search_result['id']['kind'] == 'youtube#video':
+      videos.append('%s (%s)' % (search_result['snippet']['title'],
+                                search_result['id']['videoId']))
+
+  print ('Videos:\n', '\n'.join(videos), '\n')
+  return videos[0]
+
 if __name__ == '__main__':
 
-  search_term = str(input("Please enter a term:"))
   parser = argparse.ArgumentParser()
-  parser.add_argument('--q', help='Search term', default=search_term)
+  parser.add_argument('--q', help='Search term', default='Google')
   parser.add_argument('--max-results', help='Max results', default=5)
   args = parser.parse_args()
 
@@ -103,7 +125,7 @@ if __name__ == '__main__':
   dispatcher = updater.dispatcher
 
   # on different commands 
-  dispatcher.add_handler(InlineQueryResultVideo(inline_video))
+  dispatcher.add_handler(CommandHandler("youtube", command_video))
 
   # Start the bot
   updater.start_polling()
