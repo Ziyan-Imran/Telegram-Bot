@@ -78,16 +78,6 @@ def telegram_youtube_search(update: Update, context: CallbackContext) -> None:
 
   selected_video = youtube_search(args_tele)
 
-def inline_video(update: Update, context: CallbackContext) -> None:
-  query = update.inline_query.query
-  if not query:
-    return
-  results = [
-    InlineQueryResultVideo(
-      input_message_content=telegram_youtube_search(update, context)
-    )
-  ]
-
 def command_video(update: Update, context: CallbackContext):
   youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
   search_term = ' '.join(context.args)
