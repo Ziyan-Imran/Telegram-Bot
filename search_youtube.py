@@ -14,6 +14,7 @@ from google.auth.transport import Request
 
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from telegram.ext.inlinequeryhandler import InlineQueryHandler
 import constants as keys
 from telegram import Update, InlineQueryResultVideo
 from telegram.ext import Updater, CommandHandler, CallbackContext
@@ -69,15 +70,6 @@ def youtube_search(options):
 
   return videos[0]
 
-def telegram_youtube_search(update: Update, context: CallbackContext) -> None:
-  "Search youtube for a vid"
-  parser_tele = argparse.ArgumentParser()
-  parser_tele.add_argument('--q', help='Search term', default=context)
-  parser_tele.add_argument('--max-results', help='Max results', default=5)
-  args_tele = parser_tele.parse_args()
-
-  selected_video = youtube_search(args_tele)
-
 def command_video(update: Update, context: CallbackContext):
   youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
   search_term = ' '.join(context.args)
@@ -99,7 +91,73 @@ def command_video(update: Update, context: CallbackContext):
                                 search_result['id']['videoId']))
 
   print ('Videos:\n', '\n'.join(videos), '\n')
+  default_youtube_url = 'https://www.youtube.com/watch?v='
+  videoid = search_result['id']['videoId']
+  print("Full URL is: " + default_youtube_url + videoid)
+
+  InlineQueryResultVideo(
+    id='',
+    video_url='',
+    mime_type='',
+    thumb_url='',
+    title='',
+    input_message_content=default_youtube_url + videoid
+  )
   return videos[0]
+
+def retrieve_video(videos):
+  # Used to retrieve youtube video 
+  default_youtube_url = 'https://www.youtube.com/watch?v='
+  videoid = videos['id']['videoId']
+  print("Full URL is: " + default_youtube_url + videoid)
+
+  InlineQueryResultVideo(
+    id='',
+    video_url='',
+    mime_type='',
+    thumb_url='',
+    title='',
+    input_message_content=default_youtube_url + videoid
+  )
+
+def inline_video_query(update: Update, context: CallbackContext) -> None:
+  query = update.inline_query.query
+  if not query:
+    return
+  youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION, developerKey=DEVELOPER_KEY)
+  search_term = query
+  search_respone = youtube.search().list(
+    q=search_term,
+    part='id,snippet',
+    maxResults=5  
+  ).execute()
+
+  videos = []
+  # Add each result to the appropriate list, and then display the lists of
+  # matching videos, channels, and playlists.
+  for search_result in search_respone.get('items', []):
+    if search_result['id']['kind'] == 'youtube#video':
+      videos.append('%s (%s)' % (search_result['snippet']['title'],
+                                  search_result['id']['videoId']))
+
+  print('Videos:\n', '\n'.join(videos), '\n')
+
+  default_youtube_url = 'https://www.youtube.com/watch?v='
+  videoid = search_result['id']['videoId']
+  first_video_id = search_result['items'][0]['id']['videoId']
+  print("Full URL is: " + default_youtube_url + videoid)
+  print("First video id is: " + first_video_id)
+  results = [
+      InlineQueryResultVideo(
+      id='',
+      video_url='default_youtube_url + videoid',
+      mime_type='',
+      thumb_url='',
+      title='',
+      input_message_content=default_youtube_url + videoid
+    )
+  ]
+
 
 if __name__ == '__main__':
 
@@ -116,7 +174,7 @@ if __name__ == '__main__':
 
   # on different commands 
   dispatcher.add_handler(CommandHandler("youtube", command_video))
-
+  dispatcher.add_handler(InlineQueryHandler(inline_video_query))
   # Start the bot
   updater.start_polling()
 

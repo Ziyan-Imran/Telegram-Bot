@@ -41,7 +41,7 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("start", start))
     dispatcher.add_handler(CommandHandler("scream", caps))
     dispatcher.add_handler(InlineQueryHandler(inline_query))
-    dispatcher.add_handler(CommandHandler("youtube", telegram_youtube_search))
+    dispatcher.add_handler(CommandHandler("youtube", command_video))
     dispatcher.add_error_handler(error)
 
     # Start the bot
