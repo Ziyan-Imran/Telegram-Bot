@@ -1,6 +1,8 @@
 # Telegram-Bot
 Practice using telegram bot api
 
+### Hello people, these are my planned updates
+
 - [x] Initialize bot
 - [ ] Add youtube integration
 - [ ] Add google image search integration
