@@ -36,7 +36,7 @@ def inline_query(update: Update, context: CallbackContext) -> None:
             input_message_content=InputTextMessageContent(query.upper()),
         ),
         InlineQueryResultArticle(
-            id = str(uuid4()),
+            id=str(uuid4()),
             title="Bold",
             input_message_content=InputTextMessageContent(
                 f"*{escape_markdown(query)}*", parse_mode=ParseMode.MARKDOWN
@@ -48,6 +48,28 @@ def inline_query(update: Update, context: CallbackContext) -> None:
             input_message_content=InputTextMessageContent(
                 f"_{escape_markdown(query)}_", parse_mode=ParseMode.MARKDOWN
             ),
+        ),
+        InlineQueryResultArticle(
+            id=str(uuid4()),
+            title="Underline",
+            input_message_content=InputTextMessageContent(
+                f"__{escape_markdown(query)}__", parse_mode=ParseMode.MARKDOWN_V2
+            )
+        ),
+        InlineQueryResultArticle(
+            id=str(uuid4()),
+            title="Strikethrough",
+            input_message_content=InputTextMessageContent(
+                f"~{escape_markdown(query)}~", parse_mode=ParseMode.MARKDOWN_V2
+            )
+
+        ),
+        InlineQueryResultArticle(
+            id=str(uuid4()),
+            title="Bold & Italic",
+            input_message_content=InputTextMessageContent(
+                f"*_{escape_markdown(query)}_*", parse_mode=ParseMode.MARKDOWN_V2
+            )
         ),
     ]
     context.bot.answer_inline_query(update.inline_query.id, results)

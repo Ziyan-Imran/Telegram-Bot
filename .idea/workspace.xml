@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30e0f1a9-ceb7-4f73-bc00-06521ad79e51" name="Changes" comment="Added Underline, Strikethrough, and Bold&amp;Italic message alterations." />
+    <list default="true" id="30e0f1a9-ceb7-4f73-bc00-06521ad79e51" name="Changes" comment="vsc update">
+      <change beforePath="$PROJECT_DIR$/capsbot.py" beforeDir="false" afterPath="$PROJECT_DIR$/capsbot.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
