@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30e0f1a9-ceb7-4f73-bc00-06521ad79e51" name="Changes" comment="Added Underline, Strikethrough, and Bold&amp;Italic message alterations." />
+    <list default="true" id="30e0f1a9-ceb7-4f73-bc00-06521ad79e51" name="Changes" comment="Added Underline, strikethrough, bold&amp;italic message modifications">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capsbot.py" beforeDir="false" afterPath="$PROJECT_DIR$/capsbot.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636330704059</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Underline, strikethrough, bold&amp;italic message modifications">
+      <created>1636332324853</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1636332324853</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +197,7 @@
     <MESSAGE value="Added unit-test" />
     <MESSAGE value="Adjusting README.md" />
     <MESSAGE value="Added Underline, Strikethrough, and Bold&amp;Italic message alterations." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Underline, Strikethrough, and Bold&amp;Italic message alterations." />
+    <MESSAGE value="Added Underline, strikethrough, bold&amp;italic message modifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Underline, strikethrough, bold&amp;italic message modifications" />
   </component>
 </project>
