@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30e0f1a9-ceb7-4f73-bc00-06521ad79e51" name="Changes" comment="Added Obsidian vault folder">
+    <list default="true" id="30e0f1a9-ceb7-4f73-bc00-06521ad79e51" name="Changes" comment="Merge remote-tracking branch 'origin/small-fixes' into small-fixes&#10;&#10;# Conflicts:&#10;#&#9;Telegram-Bot-Vault/.obsidian/workspace">
+      <change afterPath="$PROJECT_DIR$/.obsidian/app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.obsidian/appearance.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.obsidian/core-plugins.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.obsidian/graph.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.obsidian/hotkeys.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.obsidian/themes/Obuntu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.obsidian/workspace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Telegram-Bot-Vault/.obsidian/workspace" beforeDir="false" afterPath="$PROJECT_DIR$/Telegram-Bot-Vault/.obsidian/workspace" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Telegram-Bot-Vault/Overview.md" beforeDir="false" afterPath="$PROJECT_DIR$/Telegram-Bot-Vault/Overview.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638413517864</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Merge remote-tracking branch 'origin/small-fixes' into small-fixes&#10;&#10;# Conflicts:&#10;#&#9;Telegram-Bot-Vault/.obsidian/workspace">
+      <created>1638413631581</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1638413631581</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,6 +231,7 @@
     <MESSAGE value="Added Underline, strikethrough, bold&amp;italic message modifications" />
     <MESSAGE value="Fixing workspace.xml" />
     <MESSAGE value="Added Obsidian vault folder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Obsidian vault folder" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/small-fixes' into small-fixes&#10;&#10;# Conflicts:&#10;#&#9;Telegram-Bot-Vault/.obsidian/workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/small-fixes' into small-fixes&#10;&#10;# Conflicts:&#10;#&#9;Telegram-Bot-Vault/.obsidian/workspace" />
   </component>
 </project>
