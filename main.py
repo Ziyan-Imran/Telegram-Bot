@@ -1,5 +1,5 @@
 import logging
-import constants as keys
+import config as keys
 
 from telegram import bot
 from telegram.ext.callbackcontext import CallbackContext
