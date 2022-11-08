@@ -131,3 +131,8 @@ dmypy.json
 # Ignore config.py which stores Token ID
 old_main.py
 constants.py
+config.py
+
+# Ignore PyCharm .idea configurations
+.idea/
+.idea/workspace.xml
