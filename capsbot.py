@@ -1,12 +1,11 @@
 # Simple bot program to in line query commands and a /caps command
 import logging
-import constants as keys
+import config as keys
 from uuid import uuid4
 
 import telegram
 from telegram import InlineQueryResultArticle, InputTextMessageContent, Update, ParseMode
 from telegram import Update
-from telegram import update
 from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Filters, InlineQueryHandler, \
     CallbackContext, inlinequeryhandler
 from telegram.utils.helpers import escape_markdown
@@ -94,7 +93,7 @@ def main() -> None:
     # on different commands 
     dispatcher.add_handler(CommandHandler("scream", caps))
 
-    # on non command i.e message - echo the mesasge on Telegram
+    # on non command i.e message - echo the message on Telegram
     dispatcher.add_handler(InlineQueryHandler(inline_query))
 
     # Start the bot
