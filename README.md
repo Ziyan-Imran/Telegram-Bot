@@ -2,6 +2,8 @@
 Practice using telegram bot api
 
 - [x] Initialize bot
+- [ ] Add logger function
+- [ ] Launch via docker
 - [ ] Add youtube integration
 - [ ] Add google image search integration
 - [ ] Host bot onto some cloudservice (Heroku/Google App Engine/AWS/etc...)
