@@ -4,8 +4,6 @@ import config as keys
 from telegram import bot
 from telegram.ext.callbackcontext import CallbackContext
 
-# Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 from typing import Text
 import telegram
 from telegram import InlineQueryResultArticle, InputTextMessageContent, Update
@@ -13,6 +11,14 @@ from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Fi
     inlinequeryhandler
 from capsbot import *
 from timerbot import *
+
+
+def make_logger() -> logging.Logger:
+    """
+    Returns a logger
+    """
+    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+    return logger
 
 
 # Define a few command handlers
@@ -32,6 +38,7 @@ def main() -> None:
     # Create the Updater and pass it my bot's token
     updater = Updater(keys.API_KEY)
 
+    logger.info(f"Setting up updater: {updater.logger}")
     # Get the dispatcher to register handler
     dispatcher = updater.dispatcher
 
@@ -46,6 +53,7 @@ def main() -> None:
 
     # Start the bot
     updater.start_polling()
+    logger.info("Polling has started")
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
