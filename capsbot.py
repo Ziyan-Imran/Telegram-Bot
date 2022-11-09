@@ -10,7 +10,7 @@ from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Fi
     CallbackContext, inlinequeryhandler
 from telegram.utils.helpers import escape_markdown
 
-# Enable logging
+# Enable logging here
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
 )
