@@ -2,7 +2,8 @@
 Practice using telegram bot api
 
 - [x] Initialize bot
-- [ ] Add logger function
+- [x] Add logger function
+- [ ] Add a function to calculate bill split with tip
 - [ ] Launch via docker
 - [ ] Add youtube integration
 - [ ] Add google image search integration
