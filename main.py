@@ -1,5 +1,5 @@
 import logging
-import constants as keys
+import config as keys
 
 from telegram import bot
 from telegram.ext.callbackcontext import CallbackContext
@@ -9,11 +9,10 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 from typing import Text
 import telegram
 from telegram import InlineQueryResultArticle, InputTextMessageContent, Update
-from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Filters, InlineQueryHandler, \
-    commandhandler, dispatcher, inlinequeryhandler
+from telegram.ext import Updater, Dispatcher, CommandHandler, MessageHandler, Filters, InlineQueryHandler, dispatcher, \
+    inlinequeryhandler
 from capsbot import *
 from timerbot import *
-from search_youtube import *
 
 
 # Define a few command handlers
@@ -43,7 +42,6 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("start", start))
     dispatcher.add_handler(CommandHandler("scream", caps))
     dispatcher.add_handler(InlineQueryHandler(inline_query))
-    dispatcher.add_handler(CommandHandler("youtube", command_video))
     dispatcher.add_error_handler(error)
 
     # Start the bot
